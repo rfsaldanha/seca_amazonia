@@ -32,12 +32,12 @@ Fonte dos dados e mais opções de visualização: [GOES/NOAA](https://www.star.
 
 #### Column {width="50%"}
 
-::: {.card title="Previsão de dióxido de carbono"}
+::: {.card title="Previsão de monóxido de carbono"}
 ```{=html}
-<iframe width="700" height="300" src="https://atmosphere.copernicus.eu/charts/embed/cams/carbon-dioxide-forecasts?layer_name=composition_co2_totalcolumn&player_dimension=valid_time&projection=classical_south_america" frameBorder="0" allowFullScreen></iframe> 
+<iframe width="700" height="300" src="https://atmosphere.copernicus.eu/charts/embed/cams/carbon-monoxide-forecasts?controls_overlay=1&layer_name=composition_co_totalcolumn&player_dimension=valid_time&projection=classical_south_america"frameBorder="0" allowFullScreen></iframe>
 ```
 
-Previsão de dióxido de carbono na atmosfera para o hoje e próximos dias. Fonte: [Copernicus CAMS](https://atmosphere.copernicus.eu/charts/packages/cams/).
+Previsão de monóxido de carbono na atmosfera para o hoje e próximos dias. Fonte: [Copernicus CAMS](https://atmosphere.copernicus.eu/charts/packages/cams/).
 
 :::
 
@@ -90,8 +90,8 @@ No menu inferior esquerdo, outras opções de visualização estão disponíveis
 
 ### Row
 
-::: {.card title="Previsão de emissão de monóxido de carbono"}
-[Acesso o sistema Copernicus CAMS](https://atmosphere.copernicus.eu/charts/packages/cams/products/carbon-monoxide-forecasts?base_time=202408220000&layer_name=composition_co_totalcolumn&projection=classical_south_america){target="_blank"}\
+::: {.card title="Previsão de emissão de dióxido de carbono"}
+[Acesso o sistema Copernicus CAMS](https://atmosphere.copernicus.eu/charts/packages/cams/products/carbon-dioxide-forecasts?layer_name=composition_co2_totalcolumn&projection=classical_south_america){target="_blank"}\
 :::
 
 ::: {.card title="Concentração de CO"}
