@@ -29,23 +29,26 @@ Fonte dos dados e mais opções de visualização: [GOES/NOAA](https://www.star.
 
 #### Column {width="50%"}
 
-::: {.card title="Qualidade do ar"}
-![](){#inpe_a}\
+::: {.card title="Previsão de dióxido de carbono"}
+```{=html}
+<iframe width="700" height="300" src="https://atmosphere.copernicus.eu/charts/embed/cams/carbon-dioxide-forecasts?layer_name=composition_co2_totalcolumn&player_dimension=valid_time&projection=classical_south_america" frameBorder="0" allowFullScreen></iframe> 
+```
 
-Concentração de Material Particulado em Suspensão (MPS). Monóxido de Carbono (ppb) 40m - Total.
+Previsão de dióxido de carbono na atmosfera para o hoje e próximos dias. Fonte: [Copernicus CAMS](https://atmosphere.copernicus.eu/charts/packages/cams/).
 
-Fonte dos dados e mais opções: [INPE](http://meioambiente.cptec.inpe.br/index.php?lang=pt){target="_blank"}
 :::
+
+### Row
 
 #### Column {width="50%"}
 
-::: {.card title="Emissões de queimadas"}
+::: {.card title="Focos de incêndio"}
+```{=html}
+<iframe width="700" height="300" src="https://atmosphere.copernicus.eu/charts/embed/cams/fire-activity?player_dimension=base_time&projection=classical_south_america" frameBorder="0" allowFullScreen></iframe> 
+```
 
-![](){#inpe_b}\
+Fonte: [Copernicus CAMS](https://atmosphere.copernicus.eu/charts/packages/cams/)
 
-Localização de focos de queimada e focos de calor.
-
-Fonte dos dados e mais opções de visualização: [INPE](http://meioambiente.cptec.inpe.br/index.php?lang=pt){target="_blank"}
 :::
 
 # Imagem mais recente
@@ -88,12 +91,14 @@ No menu inferior esquerdo, outras opções de visualização estão disponíveis
 [Acesso o sistema Copernicus CAMS](https://atmosphere.copernicus.eu/charts/packages/cams/products/carbon-monoxide-forecasts?base_time=202408220000&layer_name=composition_co_totalcolumn&projection=classical_south_america){target="_blank"}\
 :::
 
-::: {.card title="Previsão de emissão de dióxido de carbono"}
-[Acesso o sistema Copernicus CAMS](https://atmosphere.copernicus.eu/charts/packages/cams/products/carbon-dioxide-forecasts?base_time=202408220000&layer_name=composition_co2_totalcolumn&projection=classical_south_america){target="_blank"}\
+::: {.card title="Concentração de CO"}
+[Acesse o sistema BRAMS INPE](http://meioambiente.cptec.inpe.br/index.php?lang=pt){target="_blank"}\
+Você pode mudar a opção na direita para ver a concentração de Material Particulado em Suspensão (MPS). Você pode ver as condições em dias anteriores alterando a data à direita. 
 :::
 
 ::: {.card title="Análise de atividades de incêndios"}
-[Acesso o sistema Copernicus CAMS](https://atmosphere.copernicus.eu/charts/packages/cams/products/fire-activity){target="_blank"}\
+[Acesse o sistema BRAMS INPE](http://meioambiente.cptec.inpe.br/index.php?lang=pt){target="_blank"}\
+Selecione a opçào "Emissões de Queimadas". Você pode ver as condições em dias anteriores alterando a data à direita.
 :::
 
 
