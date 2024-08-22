@@ -1,247 +1,100 @@
 ---
-title: "Packages & Datasets"
-author: "Raphael Saldanha"
+title: "Seca na Amazônia"
+author: "Observatório Clima e Saúde, ICICT/Fiocruz"
+
+format: 
+  dashboard:
+    orientation: columns
+    scrolling: false
+    
+include-after-body: 
+  file: viz.js
 ---
 
-```{r, "setup package stats"}
-#| echo: false
-#| message: false
-library(dplyr)
-library(cranlogs)
-library(ggplot2)
-library(ggthemes)
+# Visão geral
 
-# Packages list
-pkgs <- list(
-  list(name = "nseq", start_date = "2024-05-31"),
-  list(name = "zendown", start_date = "2024-04-12"),
-  list(name = "zenstats", start_date = "2024-05-31"),
-  list(name = "brpop", start_date = "2022-07-06"),
-  list(name = "tidyrates", start_date = "2024-03-19"),
-  list(name = "brclimr", start_date = "2023-03-07"),
-  list(name = "microdatasus", start_date = "2024-06-16")
-)
+## Column {width="50%"}
 
-# Download stats
-logs <- tibble()
-for(p in 1:length(pkgs)){
-  tmp <- cran_downloads(
-    packages = pkgs[[p]]$name, 
-    from = pkgs[[p]]$start_date, 
-    to = "last-day"
-  )
-  logs <- bind_rows(logs, tmp)
-}
-rm(tmp, p)
+::: {.card title="Últimas horas"}
+![](https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/nsa/GEOCOLOR/GOES16-NSA-GEOCOLOR-900x540.gif){width="100%"}\
 
-```
+Imagens da terra em cores reais, visíveis a olho nu.
 
-# Packages on CRAN
+Fonte dos dados e mais opções de visualização: [GOES/NOAA](https://www.star.nesdis.noaa.gov/goes/sector.php?sat=G16&sector=nsa){target="_blank"}
+:::
 
-## Row {height = 20%}
+## Column {width="50%"}
 
-```{r}
-#| content: valuebox
-#| title: "Dashboard update"
-list(
-  icon = "calendar",
-  color = "primary",
-  value = Sys.time()
-)
-```
+### Row
 
-```{r}
-#| content: valuebox
-#| title: "Number of packages"
-list(
-  color = "primary",
-  value = length(pkgs)
-)
-```
+#### Column {width="50%"}
 
-```{r}
-#| content: valuebox
-#| title: "Total downloads"
-list(
-  icon = "cloud-download",
-  color = "primary",
-  value = sum(logs$count, na.rm = TRUE)
-)
-```
+::: {.card title="Qualidade do ar"}
+![](){#inpe_a}\
 
-## Row {height = 80%}
+Concentração de Material Particulado em Suspensão (MPS). Monóxido de Carbono (ppb) 40m - Total.
 
-```{r}
-#| fig-width: 15
-#| echo: false
+Fonte dos dados e mais opções: [INPE](http://meioambiente.cptec.inpe.br/index.php?lang=pt){target="_blank"}
+:::
 
-logs |>
-  group_by(package) |>
-  arrange(date) |>
-  mutate(count = cumsum(count)) |>
-  ungroup() |>
-  ggplot(aes(x = date, y = count, colour = package)) +
-  geom_line(linewidth = 1, alpha = .7) +
-  scale_colour_solarized() +
-  theme_solarized(light=FALSE) +
-  theme(legend.position = "bottom", legend.direction = "horizontal") +
-  labs(x = "Date", y = "Cumulative downloads", colour = "")
-```
+#### Column {width="50%"}
 
+::: {.card title="Emissões de queimadas"}
 
-# Datasets
+![](){#inpe_b}\
 
-```{r, "setup dataset stats"}
-#| echo: false
-#| warning: false
+Localização de focos de queimada e focos de calor.
 
-library(zenstats)
-source("era5_daily_ids.R")
+Fonte dos dados e mais opções de visualização: [INPE](http://meioambiente.cptec.inpe.br/index.php?lang=pt){target="_blank"}
+:::
 
-stats_la <- deposit_stats(era5_daily_la, all_versions_only = TRUE, progress = FALSE)
+# Imagem mais recente
 
-stats_africa <- deposit_stats(era5_daily_africa, all_versions_only = TRUE, progress = FALSE)
+::: {.card title="Satélite GOES"}
+![](https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/nsa/GEOCOLOR/latest.jpg)\
 
-stats_zonal_brazil <- deposit_stats(c(10036212, 10947952), all_versions_only = TRUE, progress = FALSE)
+Imagem da terra mais recente, em cores reais visíveis a olho nu.
 
-stats_road_dist <- deposit_stats(11400243, all_versions_only = TRUE, progress = FALSE)
-```
+Fonte dos dados e mais opções de visualização: [GOES/NOAA](https://www.star.nesdis.noaa.gov/goes/sector.php?sat=G16&sector=ssa){target="_blank"}
+:::
 
-## Row {height = 20%}
+# Mais fontes de dados
 
-ERA5-Land Daily aggregates, Latin America
+## Column
 
-```{r}
-#| content: valuebox
-#| title: "Files"
-list(
-  icon = "files",
-  color = "primary",
-  value = nrow(stats_la)
-)
-```
+### Row
 
-```{r}
-#| content: valuebox
-#| title: "Views"
-list(
-  icon = "eye",
-  color = "primary",
-  value = sum(stats_la$views, na.rm = TRUE)
-)
-```
+::: {.card title="Declarações de desastre"}
+[Acesse o Sistema S2ID da Defesa Civil](https://s2id.mi.gov.br/){target="_blank"}\
 
-```{r}
-#| content: valuebox
-#| title: "Downloads"
-list(
-  icon = "cloud-download",
-  color = "primary",
-  value = sum(stats_la$downloads, na.rm = TRUE)
-)
-```
+Aparecem todos os decretos vigentes de emergência. Selecione o código COBRADE à esquerda para selecionar os municípios com estiagem, seca, ou incêndios florestais para ver situações de desastre específicas.
+:::
 
-## Row {height = 20%}
+::: {.card title="Monitoramento dos rios da Amazônia"}
+[Acesso o Sistema de monitoramento de bacias hidrográficas](https://www.sgb.gov.br/sace/index_bacias_monitoradas.php){target="_blank"}\
 
-ERA5-Land Daily aggregates, Africa
+A primeira bacia disponível à esquerda é do Amazonas. Clique em um dos pontos verdes e depois na opção “gráfico” para ver a tendência do nível do rio. 
+:::
 
-```{r}
-#| content: valuebox
-#| title: "Files"
-list(
-  icon = "files",
-  color = "primary",
-  value = nrow(stats_africa)
-)
-```
+::: {.card title="Dados de material particulado e vento"}
+[Acesso a visualização Eath](https://earth.nullschool.net/pt/#current/particulates/surface/level/overlay=pm2.5/orthographic=302.74,-12.02,868){target="_blank"}\
 
-```{r}
-#| content: valuebox
-#| title: "Views"
-list(
-  icon = "eye",
-  color = "primary",
-  value = sum(stats_africa$views, na.rm = TRUE)
-)
-```
+No menu inferior esquerdo, outras opções de visualização estão disponíveis.
+:::
 
-```{r}
-#| content: valuebox
-#| title: "Downloads"
-list(
-  icon = "cloud-download",
-  color = "primary",
-  value = sum(stats_africa$downloads, na.rm = TRUE)
-)
-```
+### Row
 
+::: {.card title="Previsão de emissão de monóxido de carbono"}
+[Acesso o sistema Copernicus CAMS](https://atmosphere.copernicus.eu/charts/packages/cams/products/carbon-monoxide-forecasts?base_time=202408220000&layer_name=composition_co_totalcolumn&projection=classical_south_america){target="_blank"}\
+:::
 
-## Row {height = 20%}
+::: {.card title="Previsão de emissão de dióxido de carbono"}
+[Acesso o sistema Copernicus CAMS](https://atmosphere.copernicus.eu/charts/packages/cams/products/carbon-dioxide-forecasts?base_time=202408220000&layer_name=composition_co2_totalcolumn&projection=classical_south_america){target="_blank"}\
+:::
 
-Zonal Statistics of Climate Indicators from ERA5-Land for Brazilian Municipalities
+::: {.card title="Análise de atividades de incêndios"}
+[Acesso o sistema Copernicus CAMS](https://atmosphere.copernicus.eu/charts/packages/cams/products/fire-activity){target="_blank"}\
+:::
 
-```{r}
-#| content: valuebox
-#| title: "Files"
-list(
-  icon = "files",
-  color = "primary",
-  value = nrow(stats_zonal_brazil)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Views"
-list(
-  icon = "eye",
-  color = "primary",
-  value = sum(stats_zonal_brazil$views, na.rm = TRUE)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Downloads"
-list(
-  icon = "cloud-download",
-  color = "primary",
-  value = sum(stats_zonal_brazil$downloads, na.rm = TRUE)
-)
-```
-
-## Row {height = 20%}
-
-Road distances and trip duration matrix for Brazilian municipalities
-
-```{r}
-#| content: valuebox
-#| title: "Files"
-list(
-  icon = "files",
-  color = "primary",
-  value = nrow(stats_road_dist)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Views"
-list(
-  icon = "eye",
-  color = "primary",
-  value = sum(stats_road_dist$views, na.rm = TRUE)
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Downloads"
-list(
-  icon = "cloud-download",
-  color = "primary",
-  value = sum(stats_road_dist$downloads, na.rm = TRUE)
-)
-```
 
 
