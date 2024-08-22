@@ -8,3 +8,7 @@ document.getElementById("inpe_a").src = "http://meioambiente.cptec.inpe.br/cgi-b
 
 document.getElementById("inpe_b").src = "http://meioambiente.cptec.inpe.br/cgi-bin/mapserv?mode=map&map=/http/local/meioambiente.cptec.inpe.br/resources/data/rmamb/dados/" + year + "-" + month + "-" + day + "/emissoes_queimadas.map&mapext=-90.0064308681672+-51+-28.9935691318328+18&mapsize=550+622&layers=Estados+Regioes+CO+&map.layer%5BCO%5D=OPACITY+100";
 </script>
+
+
+
+

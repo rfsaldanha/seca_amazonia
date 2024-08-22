@@ -9,6 +9,9 @@ format:
     
 include-after-body: 
   file: viz.js
+  
+include-before-body: 
+  file: ga.js
 ---
 
 # Visão geral
