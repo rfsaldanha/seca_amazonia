@@ -57,7 +57,7 @@ Fonte: [Copernicus CAMS](https://atmosphere.copernicus.eu/charts/packages/cams/)
 # Imagem mais recente
 
 ::: {.card title="Satélite GOES"}
-![](https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/nsa/GEOCOLOR/latest.jpg)\
+![](https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg)\
 
 Imagem da terra mais recente, em cores reais visíveis a olho nu.
 
